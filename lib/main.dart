@@ -64,54 +64,6 @@ class _MyHomePageState extends State<MyHomePage> {
               initialUrlRequest: URLRequest(
                 url: Uri.tryParse('http://localhost:80'),
               ),
-//               initialData: InAppWebViewInitialData(data: """
-//           <!DOCTYPE html>
-// <html lang="en">
-//   <head>
-//     <meta charset="UTF-8" />
-//     <meta
-//       name="viewport"
-//       content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
-//     />
-//   </head>
-//   <body>
-//     <h1>JavaScript Handlers (Channels) TEST</h1>
-//     <button onclick="onclick">Hehe</button>
-//     <script>
-//       var a = 0;
-//       var onclick = () => {
-//         a += 1;
-//         window.flutter_inappwebview.callHandler(
-//           "handlerFooWithArgs",
-//           1,
-//           true,
-//           ["bar", a],
-//           { foo: "baz" }
-//         );
-//       };
-//       /**
-//        * @param {int} a - The date
-//        * @param {string} b - The string
-//        */
-//       var onChangeFlutterCallback = (a, b) => {
-//         console.log(`a: \${a + 1} str -> \${b}`);
-//       };
-//       window.addEventListener(
-//         "flutterInAppWebViewPlatformReady",
-//         function (event) {
-//           // func call when ready
-//           window.flutter_inappwebview
-//             .callHandler("handlerFoo")
-//             .then(function (result) {
-//               console.log(JSON.stringify(result));
-//             });
-//         }
-//       );
-//     </script>
-//   </body>
-// </html>
-
-//           """),
               initialOptions: InAppWebViewGroupOptions(
                 android: AndroidInAppWebViewOptions(
                   useHybridComposition: true,
@@ -138,7 +90,6 @@ class _MyHomePageState extends State<MyHomePage> {
             onPressed: () {
               _webViewController.evaluateJavascript(
                   source: "onChangeFlutterCallback(2, 'hehe')");
-
               _webViewController.addJavaScriptHandler(
                 handlerName: 'handlerFoo',
                 callback: (args) => {'sdfsdf': 'asdfsdfs'},
