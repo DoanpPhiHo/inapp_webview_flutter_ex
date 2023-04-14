@@ -12,6 +12,7 @@
     <button onclick="onclick">Hehe</button>
     <script>
       var a = 0;
+      // func called by javascript
       var onclick = () => {
         a += 1;
         if (window.flutter_inappwebview) {
@@ -24,6 +25,7 @@
           );
         }
       };
+      // func called by flutter
       /**
        * @param {int} a - The date
        * @param {string} b - The string
@@ -35,7 +37,7 @@
         window.addEventListener(
           "flutterInAppWebViewPlatformReady",
           function (event) {
-            // func call when ready
+            // func call when load web ready
             window.flutter_inappwebview
               .callHandler("handlerFoo")
               .then(function (result) {
