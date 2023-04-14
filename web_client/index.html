@@ -14,13 +14,15 @@
       var a = 0;
       var onclick = () => {
         a += 1;
-        window.flutter_inappwebview.callHandler(
-          "handlerFooWithArgs",
-          1,
-          true,
-          ["bar", a],
-          { foo: "baz" }
-        );
+        if (window.flutter_inappwebview) {
+          window.flutter_inappwebview.callHandler(
+            "handlerFooWithArgs",
+            1,
+            true,
+            ["bar", a],
+            { foo: "baz" }
+          );
+        }
       };
       /**
        * @param {int} a - The date
@@ -29,17 +31,19 @@
       var onChangeFlutterCallback = (a, b) => {
         console.log(`a: ${a + 1} str -> ${b}`);
       };
-      window.addEventListener(
-        "flutterInAppWebViewPlatformReady",
-        function (event) {
-          // func call when ready
-          window.flutter_inappwebview
-            .callHandler("handlerFoo")
-            .then(function (result) {
-              console.log(JSON.stringify(result));
-            });
-        }
-      );
+      if (window.flutter_inappwebview) {
+        window.addEventListener(
+          "flutterInAppWebViewPlatformReady",
+          function (event) {
+            // func call when ready
+            window.flutter_inappwebview
+              .callHandler("handlerFoo")
+              .then(function (result) {
+                console.log(JSON.stringify(result));
+              });
+          }
+        );
+      }
     </script>
   </body>
 </html>
